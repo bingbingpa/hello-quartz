@@ -1,3 +1,17 @@
+### Quartz 란? 
+- Terracotta 라는 회사에 의해 개발된 Job Scheduling 라이브러리 
+- 수십에서 수천 개의 작업도 실행 가능하며 간단한 interval 형식이나 Cron 표현식으로 복잡한 스케줄링도 지원한다. 
+
+### 장단점 
+- 장점 
+    - DB 기반으로 스케줄러 간의 Clustering 기능을 제공한다. 
+    - 시스템 Fail-over 와 Random 방식의 로드 분산처리를 지원한다. 
+    - In-memory 스케줄링도 제공한다. 
+- 단점 
+    - Clustering 기능을 제공하지만, 단순한 random 방식이라서 완벽한 Cluster 간의 로드 분산은 안된다. 
+    - 어드민 UI 를 제공하지 않는다. 
+    - 스케줄링 실행에 대한 History는 보관하지 않는다. 
+
 ### 1.의존성 추가
 - springboot 2.3.0 기준 quartz 2.3.2 버전이 import 된다.
 ~~~ source
