@@ -22,7 +22,8 @@
 - Scheduler : 스케줄러와 상호 작용하기 위한 기본 API
 - Job :  단 하나의 메서드를 가진 execute Job 인터페이스를 제공하고, 실제 작업을 이 메서드에 구현하면 된다.
 - JobDetail : Job을 실행시키기 위한 정보를 담고 있는 객체. Job의 이름, 그룹, JobDataMap 속성 등을 지정할 수 있다. 
-- Trigger : Job을 실행시킬 스케줄링 조건(반복횟수, 시작시간 등)을 담고 있고 Scheduler 는 이 정보를 기반으로 Job을 수행시킨다.
+- JobDataMap : Job 인스턴스가 실행할 때 사용할 수 있게 원하는 정보를 담을 수 있는 객체.
+- Trigger : Job을 실행시킬 스케줄링 조건(반복횟수, 시작시간 등)을 담고 있고, Scheduler 는 이 정보를 기반으로 Job을 수행시킨다.
 - JobBuilder : Job 인스턴스를 정의하는 JobDetail 인스턴스를 정의 / 빌드 하는데 사용
 - TriggerBuilder : Trigger 인스턴스를 정의 / 빌드하는데 사용
 - Listener : Scheduler 의 이벤트를 받을 수 있도록 Quartz 에서 제공하는 인터페이스이며 2가지를 제공한다.
