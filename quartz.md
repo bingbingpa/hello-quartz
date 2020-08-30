@@ -12,6 +12,12 @@
     - 어드민 UI 를 제공하지 않는다. 
     - 스케줄링 실행에 대한 History는 보관하지 않는다. 
 
+### 기타 
+- Spring Boot에서는 @EnableAutoConfiguration 어노테이션(@SpringBootApplication 어노테이션에 의해 포함됨)에 의해서 
+application.properties 내의 spring.datasource.* 속성은 정의하면 자동으로 인식 된다. 
+하지만, JavaConfig로 별도의 DataSource를 구현하여 Bean을 등록했다면 spring.datasource.* 속성은 적용되지 않는다. 
+- @EnableAutoConfiguration 는 @SpringBootConfiguration, @ComponentScan, @EnableAutoConfiguration 3가지 합쳐진 것이라고 볼 수 있다. 
+
 ### 1.의존성 추가
 - springboot 2.3.0 기준 quartz 2.3.2 버전이 import 된다.
 ~~~ source
