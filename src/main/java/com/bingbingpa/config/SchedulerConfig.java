@@ -1,5 +1,7 @@
 package com.bingbingpa.config;
 
+import com.bingbingpa.service.QuartzJobListener;
+import com.bingbingpa.service.QuartzTriggerListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
@@ -14,11 +16,11 @@ import java.util.Properties;
 @Configuration
 @ConditionalOnProperty(name = "quartz.enabled")
 public class SchedulerConfig {
-//    @Autowired
-//    private TriggersListener triggersListener;
-//
-//    @Autowired
-//    private JobsListener jobsListener;
+    @Autowired
+    private QuartzTriggerListener triggerListener;
+
+    @Autowired
+    private QuartzJobListener quartzJobListener;
 
     @Autowired
     private DataSource dataSource;
@@ -45,8 +47,8 @@ public class SchedulerConfig {
         Properties properties = new Properties();
         properties.putAll(quartzProperties.getProperties());
 
-//        schedulerFactoryBean.setGlobalTriggerListeners(triggersListener);
-//        schedulerFactoryBean.setGlobalJobListeners(jobsListener);
+        schedulerFactoryBean.setGlobalTriggerListeners(triggerListener);
+        schedulerFactoryBean.setGlobalJobListeners(quartzJobListener);
         schedulerFactoryBean.setOverwriteExistingJobs(true);
         schedulerFactoryBean.setDataSource(dataSource);
         schedulerFactoryBean.setQuartzProperties(properties);
