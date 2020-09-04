@@ -13,8 +13,8 @@ import java.util.Map;
 
 public class CronJob extends QuartzJobBean implements InterruptableJob {
 
-    private volatile boolean toStopFlag = true;
     private final JobService jobService;
+    private volatile boolean toStopFlag = true;
 
     public CronJob(JobService jobService) {
         this.jobService = jobService;

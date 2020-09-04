@@ -22,56 +22,56 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.sql.DataSource;
 
 @Slf4j
-@MapperScan(basePackages="com.bingbingpa.persistence")
+@MapperScan(basePackages = "com.bingbingpa.persistence")
 @Configuration
-@ComponentScan(	basePackages = {"com.bingbingpa.service", "com.bingbingpa.persistence"},
-              includeFilters = {	@Filter(type = FilterType.ANNOTATION, value = Component.class),
-                                  	@Filter(type = FilterType.ANNOTATION, value = Service.class),
-                                  	@Filter(type = FilterType.ANNOTATION, value = Repository.class) },
-              excludeFilters = {	@Filter(type = FilterType.ANNOTATION, value = Controller.class),
-            		  				@Filter(type = FilterType.ANNOTATION, value = RestController.class) })
+@ComponentScan(basePackages = {"com.bingbingpa.service", "com.bingbingpa.persistence"},
+        includeFilters = {@Filter(type = FilterType.ANNOTATION, value = Component.class),
+                @Filter(type = FilterType.ANNOTATION, value = Service.class),
+                @Filter(type = FilterType.ANNOTATION, value = Repository.class)},
+        excludeFilters = {@Filter(type = FilterType.ANNOTATION, value = Controller.class),
+                @Filter(type = FilterType.ANNOTATION, value = RestController.class)})
 public class RootConfig {
 
-	@Value("${spring.datasource.driver-class-name}")
-	private String driverClassName;
-	@Value("${spring.datasource.url}")
-	private String url;
-	@Value("${spring.datasource.username}")
-	private String username;
-	@Value("${spring.datasource.password}")
-	private String password;
-	@Value("${spring.datasource.hikari.maximum-pool-size}")
-	private Integer maximumPoolSize;
-	@Value("${spring.datasource.hikari.minimum-idle}")
-	private Integer minimumIdle;
-	
-	@Bean(name="quartz-datasource")
-	public DataSource dataSource() {
-		HikariDataSource dataSource = new HikariDataSource();
-		dataSource.setDriverClassName(driverClassName);
-		dataSource.setJdbcUrl(url);
-		dataSource.setUsername(username);
-		dataSource.setPassword(password);
-		dataSource.setMaximumPoolSize(maximumPoolSize);
-		dataSource.setMinimumIdle(minimumIdle);
-		
-		return dataSource;
-	}
-	
-	@Bean
+    @Value("${spring.datasource.driver-class-name}")
+    private String driverClassName;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
+    @Value("${spring.datasource.hikari.maximum-pool-size}")
+    private Integer maximumPoolSize;
+    @Value("${spring.datasource.hikari.minimum-idle}")
+    private Integer minimumIdle;
+
+    @Bean(name = "quartz-datasource")
+    public DataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setJdbcUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        dataSource.setMaximumPoolSize(maximumPoolSize);
+        dataSource.setMinimumIdle(minimumIdle);
+
+        return dataSource;
+    }
+
+    @Bean
     public DataSourceTransactionManager transactionManager() {
-		log.info(" ### RootConfig transactionManager ### ");
+        log.info(" ### RootConfig transactionManager ### ");
         return new DataSourceTransactionManager(dataSource());
     }
-	
-	@Bean
+
+    @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
-		log.info(" ### RootConfig sqlSessionFactory ### ");
-		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-		factory.setDataSource(dataSource());
-		factory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*.xml"));
-		factory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("mybatis-config.xml"));
-		return factory.getObject();
+        log.info(" ### RootConfig sqlSessionFactory ### ");
+        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
+        factory.setDataSource(dataSource());
+        factory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*.xml"));
+        factory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("mybatis-config.xml"));
+        return factory.getObject();
     }
 
 }

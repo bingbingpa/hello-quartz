@@ -13,7 +13,7 @@ import java.text.ParseException;
  */
 public class PersistableCronTriggerFactoryBean extends CronTriggerFactoryBean {
 
-    public static final String JOB_DETAIL_KEY ="jobDetail";
+    public static final String JOB_DETAIL_KEY = "jobDetail";
 
     @Override
     public void afterPropertiesSet() throws ParseException {
