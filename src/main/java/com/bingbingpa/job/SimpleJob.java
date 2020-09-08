@@ -23,13 +23,11 @@ public class SimpleJob extends QuartzJobBean implements InterruptableJob {
     protected void executeInternal(JobExecutionContext jobExecutionContext) {
         JobKey key = jobExecutionContext.getJobDetail().getKey();
         System.out.println("Simple Job started with key :" + key.getName() + ", Group :" + key.getGroup() + " , Thread Name :" + Thread.currentThread().getName());
-
         System.out.println("======================================");
         System.out.println("Accessing annotation example: " + jobService.getAllJobs());
         List<Map<String, Object>> list = jobService.getAllJobs();
         System.out.println("Job list :" + list);
         System.out.println("======================================");
-
         //*********** For retrieving stored key-value pairs ***********/
         JobDataMap dataMap = jobExecutionContext.getMergedJobDataMap();
         String myValue = dataMap.getString("myKey");
