@@ -2,18 +2,18 @@ package com.bingbingpa.service;
 
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 public interface JobService {
-    boolean scheduleOneTimeJob(String jobName, Class<? extends QuartzJobBean> jobClass, LocalDate date);
+    boolean scheduleOneTimeJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date);
 
-    boolean scheduleCronJob(String jobName, Class<? extends QuartzJobBean> jobClass, LocalDate date, String cronExpression);
+    boolean scheduleCronJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date, String cronExpression);
 
-    boolean updateOneTimeJob(String jobName, LocalDate date);
+    boolean updateOneTimeJob(String jobName, Date date);
 
-    boolean updateCronJob(String jobName, LocalDate date, String cronExpression);
+    boolean updateCronJob(String jobName, Date date, String cronExpression);
 
     boolean unScheduleJob(String jobName);
 
