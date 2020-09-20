@@ -27,7 +27,7 @@ public class JobServiceImpl implements JobService {
      */
     @Override
     public boolean scheduleOneTimeJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date) {
-        System.out.println("Request received to scheduleJob");
+        System.out.println("Request received to scheduleOneTimeJob");
 
         String jobKey = jobName;
         String groupKey = "SampleGroup";
@@ -57,7 +57,7 @@ public class JobServiceImpl implements JobService {
      */
     @Override
     public boolean scheduleCronJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date, String cronExpression) {
-        System.out.println("Request received to scheduleJob");
+        System.out.println("Request received to scheduleCronJob");
 
         String jobKey = jobName;
         String groupKey = "SampleGroup";
