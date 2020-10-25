@@ -10,7 +10,7 @@
 - 단점 
     - Clustering 기능을 제공하지만, 단순한 random 방식이라서 완벽한 Cluster 간의 로드 분산은 안된다. 
     - 어드민 UI 를 제공하지 않는다. 
-    - 스케줄링 실행에 대한 History는 보관하지 않는다. 
+    - 스케줄링 실행에 대한 History 는 보관하지 않는다. 
 
 ### 의존성 추가
 - springboot 2.3.0 기준 quartz 2.3.2 버전이 import 된다.
@@ -43,12 +43,12 @@
 - 스케줄러 이름은 각각 다르게 사용.
 
 ### 모르는 내용 정리 
-- Spring Boot에서는 @EnableAutoConfiguration 어노테이션(@SpringBootApplication 어노테이션에 의해 포함됨)에 의해서 
+- Spring Boot 에서는 @EnableAutoConfiguration 어노테이션(@SpringBootApplication 어노테이션에 의해 포함됨)에 의해서 
 application.properties 내의 spring.datasource.* 속성은 정의하면 자동으로 인식 된다. 
-하지만, JavaConfig로 별도의 DataSource를 구현하여 Bean을 등록했다면 spring.datasource.* 속성은 적용되지 않는다. 
+하지만, JavaConfig 로 별도의 DataSource 를 구현하여 Bean 을 등록했다면 spring.datasource.* 속성은 적용되지 않는다. 
 - @EnableAutoConfiguration 는 @SpringBootConfiguration, @ComponentScan, @EnableAutoConfiguration 3가지 합쳐진 것이라고 볼 수 있다. 
 - SpringBeanJobFactory
-    - 애플리케이션 구동 완료 후에 동적으로 추가하는 bean에도 의존 관계를 쉽게 주입할 수 있게 해준다.
+    - 애플리케이션 구동 완료 후에 동적으로 추가하는 bean 에도 의존 관계를 쉽게 주입할 수 있게 해준다.
     - 스케줄러는 일반적으로 작업을 스케줄하는 시점과 작업을 실행하는 시점이 다르다. 그리고 작업을 실행하려면 작업 클래스를 인스턴스화 해야 하는데, 이 때 JobFactory 가 사용된다. 
 
 
