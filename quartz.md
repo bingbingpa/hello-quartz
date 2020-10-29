@@ -49,6 +49,11 @@ application.properties 내의 spring.datasource.* 속성은 정의하면 자동�
 - @EnableAutoConfiguration 는 @SpringBootConfiguration, @ComponentScan, @EnableAutoConfiguration 3가지 합쳐진 것이라고 볼 수 있다. 
 - SpringBeanJobFactory
     - 애플리케이션 구동 완료 후에 동적으로 추가하는 bean 에도 의존 관계를 쉽게 주입할 수 있게 해준다.
-    - 스케줄러는 일반적으로 작업을 스케줄하는 시점과 작업을 실행하는 시점이 다르다. 그리고 작업을 실행하려면 작업 클래스를 인스턴스화 해야 하는데, 이 때 JobFactory 가 사용된다. 
+    - 스케줄러는 일반적으로 작업을 스케줄하는 시점과 작업을 실행하는 시점이 다르다. 그리고 작업을 실행하려면 작업 클래스를 인스턴스화 해야 하는데, 이 때 JobFactory 가 사용된다.
+- Job : Job 은 **"실행 해야 할 작업"**을 의미한다. Job 인터페이스는 execute 메서드를 정의하는데, execute 메서드의 파라미터인 JobExecutionContext 에는 트리거 핸들링, 스케쥴에 의한
+핸들링 등을 포함하여 런타임 환경에 대한 정보를 제공한다.
+- spring.quartz.properties.org.quartz.jobStore.useProperties 이 값이 true 이면 DB 에 JobDataMaps 에 저장되는 값이 바이너리가 아닌 String 값으로 저장된다. 
+  
+ 
 
 
