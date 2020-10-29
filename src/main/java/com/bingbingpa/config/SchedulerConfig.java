@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ConditionalOnProperty(name = "quartz.enabled")
+//@ConditionalOnProperty(name = "quartz.enabled")
 public class SchedulerConfig {
     @Autowired
     private QuartzTriggerListener triggerListener;

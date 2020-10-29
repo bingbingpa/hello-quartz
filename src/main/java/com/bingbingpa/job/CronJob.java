@@ -5,6 +5,7 @@ import org.quartz.InterruptableJob;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.util.Date;
@@ -13,12 +14,10 @@ import java.util.Map;
 
 public class CronJob extends QuartzJobBean implements InterruptableJob {
 
-    private final JobService jobService;
+    @Autowired
+    private JobService jobService;
     private volatile boolean toStopFlag = true;
 
-    public CronJob(JobService jobService) {
-        this.jobService = jobService;
-    }
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) {

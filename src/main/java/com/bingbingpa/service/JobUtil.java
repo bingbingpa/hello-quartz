@@ -1,10 +1,11 @@
 package com.bingbingpa.service;
 
-import com.bingbingpa.config.PersistableCronTriggerFactoryBean;
+//import com.bingbingpa.config.PersistableCronTriggerFactoryBean;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
@@ -53,7 +54,7 @@ public class JobUtil {
      * @return Trigger
      */
     protected static Trigger createCronTrigger(String triggerName, Date startTime, String cronExpression, int misFireInstruction) {
-        PersistableCronTriggerFactoryBean factoryBean = new PersistableCronTriggerFactoryBean();
+        CronTriggerFactoryBean factoryBean = new CronTriggerFactoryBean();
         factoryBean.setName(triggerName);
         factoryBean.setStartTime(startTime);
         factoryBean.setCronExpression(cronExpression);
