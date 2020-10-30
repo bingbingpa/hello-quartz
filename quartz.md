@@ -53,7 +53,7 @@ application.properties 내의 spring.datasource.* 속성은 정의하면 자동�
 - Job : Job 은 **"실행 해야 할 작업"**을 의미한다. Job 인터페이스는 execute 메서드를 정의하는데, execute 메서드의 파라미터인 JobExecutionContext 에는 트리거 핸들링, 스케쥴에 의한
 핸들링 등을 포함하여 런타임 환경에 대한 정보를 제공한다.
 - spring.quartz.properties.org.quartz.jobStore.useProperties 이 값이 true 이면 DB 에 JobDataMaps 에 저장되는 값이 바이너리가 아닌 String 값으로 저장된다. 
-  
+- quartz 설정을 @ConditionalOnProperty 설정값에 따라 활성화 할 경우 properties 파일을 따로 분리해야 한다.  
  
 
 
