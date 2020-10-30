@@ -19,10 +19,10 @@ import java.util.Properties;
 @Configuration
 @ConditionalOnProperty(name = "quartz.enabled")
 public class SchedulerConfig {
-//    @Autowired
-//    private QuartzTriggerListener triggerListener;
-//    @Autowired
-//    private QuartzJobListener quartzJobListener;
+    @Autowired
+    private QuartzTriggerListener triggerListener;
+    @Autowired
+    private QuartzJobListener quartzJobListener;
     @Autowired
     private DataSource dataSource;
 
@@ -40,8 +40,8 @@ public class SchedulerConfig {
         jobFactory.setApplicationContext(applicationContext);
         schedulerFactoryBean.setJobFactory(jobFactory);
         schedulerFactoryBean.setApplicationContext(applicationContext);
-//        schedulerFactoryBean.setGlobalTriggerListeners(triggerListener);
-//        schedulerFactoryBean.setGlobalJobListeners(quartzJobListener);
+        schedulerFactoryBean.setGlobalTriggerListeners(triggerListener);
+        schedulerFactoryBean.setGlobalJobListeners(quartzJobListener);
         schedulerFactoryBean.setOverwriteExistingJobs(true);
         schedulerFactoryBean.setDataSource(dataSource);
         schedulerFactoryBean.setQuartzProperties(quartzProperties());
