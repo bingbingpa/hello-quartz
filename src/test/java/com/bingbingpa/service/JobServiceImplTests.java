@@ -16,7 +16,7 @@ class JobServiceImplTests {
     @Test
     void JobServiceExecuteTest() {
 //        jobService.scheduleOneTimeJob("testJob", CronJob.class, new Date());
-        jobService.scheduleCronJob("testJob2", CronJob.class, new Date(), "1 * * * * ?");
+        jobService.scheduleCronJob("testJob", CronJob.class, new Date(), "1 * * * * ?");
 //        jobService.deleteJob("testJob");
     }
 
