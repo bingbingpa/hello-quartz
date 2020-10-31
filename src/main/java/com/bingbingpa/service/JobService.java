@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface JobService {
+    
     boolean scheduleOneTimeJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date);
 
     boolean scheduleCronJob(String jobName, Class<? extends QuartzJobBean> jobClass, Date date, String cronExpression);
