@@ -10,6 +10,8 @@ import java.util.Date;
 @SpringBootTest
 class JobServiceTests {
 
+    private final String JOB_NAME = "testJob";
+
     @Autowired
     private JobService jobService;
 
@@ -19,7 +21,7 @@ class JobServiceTests {
 
     @Test
     void scheduleCronJob() {
-        jobService.scheduleCronJob("testJob2", CronJob.class, new Date(), "1 * * * * ?");
+        jobService.scheduleCronJob(JOB_NAME, CronJob.class, new Date(), "1 * * * * ?");
     }
 
     @Test
@@ -40,18 +42,22 @@ class JobServiceTests {
 
     @Test
     void pauseJob() {
+        jobService.pauseJob(JOB_NAME);
     }
 
     @Test
     void resumeJob() {
+        jobService.resumeJob(JOB_NAME);
     }
 
     @Test
     void startJobNow() {
+        jobService.startJobNow(JOB_NAME);
     }
 
     @Test
     void isJobRunning() {
+        jobService.isJobRunning(JOB_NAME);
     }
 
     @Test
