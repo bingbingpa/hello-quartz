@@ -1,16 +1,19 @@
 package com.bingbingpa.service;
 
 import com.bingbingpa.job.CronJob;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
+
+@Slf4j
 @SpringBootTest
 class JobServiceTests {
 
-    private final String JOB_NAME = "testJob";
+    private final String JOB_NAME = "testJob3dhsmf";
 
     @Autowired
     private JobService jobService;
