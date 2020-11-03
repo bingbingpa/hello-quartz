@@ -13,10 +13,10 @@ import java.util.Date;
 @SpringBootTest
 class JobServiceTests {
 
-    private final String JOB_NAME = "testJob3dhsmf";
-
     @Autowired
     private JobService jobService;
+    private final String JOB_NAME = "testJob1";
+
 
     @Test
     void scheduleOneTimeJob() {
